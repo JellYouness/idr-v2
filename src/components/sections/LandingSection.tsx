@@ -14,7 +14,7 @@ export function LandingSection({ site }: LandingSectionProps) {
     <section
       id="top"
       aria-labelledby="landing-portfolio-title"
-      className="flex min-h-dvh flex-col bg-background text-foreground px-6 md:px-12"
+      className="flex min-h-dvh flex-col bg-background text-foreground"
     >
       <Container>
         <div className="pt-8 md:pt-12">

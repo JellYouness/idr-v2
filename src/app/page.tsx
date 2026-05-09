@@ -1,6 +1,7 @@
 import { IntroSection } from "@/components/sections/IntroSection";
 import { LandingSection } from "@/components/sections/LandingSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 import { ResumeSection } from "@/components/sections/ResumeSection";
 import {
   introContent,
@@ -16,6 +17,7 @@ export default function Home() {
       <IntroSection intro={introContent} />
       <ResumeSection resume={resumeContent} />
       <PortfolioSection content={portfolioSectionContent} site={siteMeta} />
+      <ContactSection site={siteMeta} />
       {/* <GallerySection items={galleryContent} video={showcaseVideo} /> */}
     </main>
   );
