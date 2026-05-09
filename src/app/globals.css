@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYREGULAR.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYMEDIUM.OTF") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYBOLD.OTF") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYLIGHTITALIC.OTF") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF") format("opentype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "SF Pro Display", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #f4f4f4;
+  --color-foreground: #0a0a0a;
+  --color-muted: #666666;
+  --color-muted-light: #999999;
+  --color-accent: #0a0a0a;
+  --color-surface: #ffffff;
+  --color-border: #d4d4d4;
+  --color-card-placeholder: #1a1a1a;
+  --color-button-fill: #ebebeb;
+
+  --spacing-section: clamp(3.5rem, 8vw, 6rem);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-foreground) 12%, transparent);
+  color: var(--color-foreground);
+}
+
+/* Subtle grain overlay for giant “Portfolio” title (matches PDF/Figma look) */
+.portfolio-title-grain {
+  position: relative;
+  isolation: isolate;
+}
+
+.portfolio-title-grain::after {
+  content: "";
+  position: absolute;
+  inset: -4%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.portfolio-title-grain > * {
+  position: relative;
+  z-index: 2;
+}
