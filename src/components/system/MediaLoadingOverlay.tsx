@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 type MediaLoadingOverlayProps = {
@@ -84,12 +85,17 @@ export function MediaLoadingOverlay({ timeoutMs = 8000 }: MediaLoadingOverlayPro
         isReady ? "pointer-events-none opacity-0" : "opacity-100",
       ].join(" ")}
     >
-      <div className="flex items-center gap-3 text-sm font-medium text-foreground/80">
-        <span
-          className="h-4 w-4 animate-spin rounded-full border-2 border-foreground/25 border-t-foreground/80"
-          aria-hidden="true"
+      <div className="flex flex-col items-center">
+        <Image
+          src="/videos/logo.gif"
+          alt=""
+          width={160}
+          height={160}
+          unoptimized
+          priority
+          className="size-28 object-contain sm:size-36"
         />
-        <span>Loading…</span>
+        <span className="sr-only">Loading</span>
       </div>
     </div>
   );

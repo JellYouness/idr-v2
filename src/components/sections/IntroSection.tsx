@@ -53,14 +53,14 @@ export function IntroSection({ intro }: IntroSectionProps) {
             </div>
           </div>
 
-          <div className="relative flex min-h-[280px] justify-center lg:min-h-[420px] lg:justify-end">
-            <div className="relative h-[min(70vh,520px)] w-full max-w-md lg:h-[min(75vh,600px)]">
+          <div className="relative flex min-h-[340px] justify-center lg:min-h-[720px] lg:justify-end">
+            <div className="relative h-[min(78vh,620px)] w-full max-w-xl lg:h-[min(82vh,720px)] lg:max-w-2xl">
               <Image
                 src={intro.portraitSrc}
                 alt={intro.portraitAlt}
                 fill
                 className="object-contain object-bottom"
-                sizes="(min-width: 1024px) 40vw, 90vw"
+                sizes="(min-width: 1024px) 48vw, 92vw"
                 priority
               />
             </div>

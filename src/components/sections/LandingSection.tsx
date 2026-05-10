@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { BrandLogo } from "@/components/brand/BrandLogo";
 import type { SiteMeta } from "@/lib/types";
 import { Container } from "../layout/Container";
 
@@ -8,19 +7,27 @@ type LandingSectionProps = {
 };
 
 export function LandingSection({ site }: LandingSectionProps) {
-  const contactLine = `${site.email}  ${site.phoneDisplay}  ${site.location}`;
+  const contactLine = `${site.email} | ${site.phoneDisplay} | ${site.location}`;
 
   return (
     <section
       id="top"
       aria-labelledby="landing-portfolio-title"
-      className="flex min-h-dvh flex-col bg-background text-foreground"
+      className="bg-background text-foreground"
     >
-      <Container>
+      <Container className="flex h-screen flex-col justify-center">
         <div className="pt-8 md:pt-12">
-          <div className="flex flex-col gap-3 text-foreground">
-            <BrandLogo className="text-foreground" />
-            <p className="text-lg font-bold tracking-tight md:text-xl">
+          <div className="flex flex-col gap-1.5 text-foreground">
+            <Image
+              src="/images/logo.png"
+              alt={`${site.name} logo`}
+              width={120}
+              height={144}
+              priority
+              sizes="(min-width: 768px) 7rem, 6rem"
+              className="h-14 w-auto max-w-[min(100%,5.5rem)] object-contain object-left md:h-18 md:max-w-[min(100%,6.5rem)]"
+            />
+            <p className="text-lg font-extrabold tracking-tight md:text-xl">
               {site.eyebrow}
             </p>
             <p className="text-base font-normal md:text-lg">{site.name}</p>

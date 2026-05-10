@@ -1,5 +1,6 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { SkillIcon } from "@/components/ui/SkillIcon";
 import { toolLabels } from "@/lib/portfolio-content";
 import type { PortfolioSectionContent } from "@/lib/types";
 import type { SiteMeta } from "@/lib/types";
@@ -32,9 +33,10 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
                 <h3 className="text-xl font-bold text-foreground">
                   {card.title}
                 </h3>
-                <p className="shrink-0 text-xs text-muted-light">
+                <span className="flex shrink-0 items-center gap-1.5 text-xs text-muted-light">
+                  <SkillIcon toolId={card.toolId} size={16} />
                   {toolLabels[card.toolId]}
-                </p>
+                </span>
               </div>
               <div className="mt-5 aspect-3/4 w-full overflow-hidden bg-card-placeholder">
                 <video
@@ -56,7 +58,7 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
         <div className="mt-14 flex justify-center">
           <a
             href={site.portfolioCta.href}
-            className="inline-flex min-w-[min(100%,20rem)] items-center justify-center border border-foreground/35 bg-button-fill px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground/35 px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
           >
             {site.portfolioCta.label}
           </a>

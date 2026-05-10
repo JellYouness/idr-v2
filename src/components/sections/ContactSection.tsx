@@ -118,7 +118,7 @@ export function ContactSection({ site }: ContactSectionProps) {
             <div className="mt-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="submit"
-                className="inline-flex min-w-[min(100%,16rem)] items-center justify-center border border-foreground/35 bg-button-fill px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
+                className="inline-flex min-w-[min(100%,16rem)] items-center justify-center border border-foreground/35 px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
               >
                 Send message
               </button>
