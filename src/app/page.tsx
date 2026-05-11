@@ -20,6 +20,7 @@ export default function Home() {
       <ResumeSection resume={resumeContent} />
       <PortfolioSection content={portfolioSectionContent} site={siteMeta} />
       <ContactSection site={siteMeta} />
+      <LandingIntroDivider />
       {/* <GallerySection items={galleryContent} video={showcaseVideo} /> */}
     </main>
   );

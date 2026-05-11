@@ -33,7 +33,7 @@ export function IntroSection({ intro }: IntroSectionProps) {
             {intro.headline}
           </h2>
 
-          <p className="max-lg:text-center text-lg font-medium italic text-muted sm:text-xl lg:col-start-1 lg:row-start-3">
+          <p className="max-lg:text-center text-lg font-medium italic text-muted sm:text-xl lg:col-start-1 lg:row-start-3 lg:-mt-32">
             {intro.title}
           </p>
 
@@ -57,7 +57,7 @@ export function IntroSection({ intro }: IntroSectionProps) {
             </div>
           </div>
 
-          <div className="flex w-full max-w-xl flex-col gap-3 sm:gap-4 max-lg:mx-auto max-lg:text-center lg:col-start-1 lg:row-start-4">
+          <div className="flex w-full max-w-xl flex-col gap-3 sm:gap-4 max-lg:mx-auto max-lg:text-center lg:col-start-1 lg:row-start-4 lg:-mt-32">
             {intro.paragraphs.map((paragraph, index) => (
               <Text key={index} className="max-lg:text-center">
                 {paragraph}

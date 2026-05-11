@@ -9,7 +9,7 @@ export function SiteFooter({ site }: SiteFooterProps) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="section-tone-dark border-t border-foreground/15 bg-background py-10 text-foreground">
+    <footer className="section-tone-dark border-foreground/15 bg-background py-10 text-foreground">
       <Container>
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
