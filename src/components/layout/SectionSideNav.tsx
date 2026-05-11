@@ -48,7 +48,7 @@ export function SectionSideNav() {
       aria-label="On this page"
       className="pointer-events-none fixed right-4 top-1/2 z-50 hidden -translate-y-1/2 md:block md:pointer-events-auto lg:right-8"
     >
-      <ul className="flex flex-col items-end gap-1 border-l border-foreground/15 pl-3">
+      <ul className="flex flex-col items-end gap-1 rounded-lg border border-zinc-200/90 bg-white/92 py-2 pl-3 pr-1 shadow-sm backdrop-blur-sm">
         {NAV_ITEMS.map((item) => {
           const isActive = activeId === item.id;
           return (
@@ -58,8 +58,8 @@ export function SectionSideNav() {
                 className={[
                   "group pointer-events-auto flex items-center gap-2 py-1 text-xs tracking-wide transition-colors",
                   isActive
-                    ? "font-semibold text-foreground"
-                    : "font-medium text-muted hover:text-foreground",
+                    ? "font-semibold text-zinc-950"
+                    : "font-medium text-zinc-500 hover:text-zinc-900",
                 ].join(" ")}
                 aria-current={isActive ? "location" : undefined}
               >
@@ -67,8 +67,8 @@ export function SectionSideNav() {
                   className={[
                     "h-1.5 shrink-0 rounded-full transition-[width,background-color]",
                     isActive
-                      ? "w-4 bg-foreground"
-                      : "w-1.5 bg-foreground/25 group-hover:bg-foreground/50",
+                      ? "w-4 bg-zinc-950"
+                      : "w-1.5 bg-zinc-300 group-hover:bg-zinc-500",
                   ].join(" ")}
                   aria-hidden
                 />

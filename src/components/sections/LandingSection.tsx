@@ -13,7 +13,7 @@ export function LandingSection({ site }: LandingSectionProps) {
     <section
       id="top"
       aria-labelledby="landing-portfolio-title"
-      className="bg-background text-foreground"
+      className="section-tone-dark flex min-h-dvh flex-col bg-background text-foreground"
     >
       <Container className="flex h-screen flex-col justify-center">
         <div className="pt-8 md:pt-12">
@@ -25,7 +25,7 @@ export function LandingSection({ site }: LandingSectionProps) {
               height={144}
               priority
               sizes="(min-width: 768px) 7rem, 6rem"
-              className="h-14 w-auto max-w-[min(100%,5.5rem)] object-contain object-left md:h-18 md:max-w-[min(100%,6.5rem)]"
+              className="h-14 w-auto max-w-[min(100%,5.5rem)] object-contain object-left brightness-0 invert md:h-18 md:max-w-[min(100%,6.5rem)]"
             />
             <p className="text-lg font-extrabold tracking-tight md:text-xl">
               {site.eyebrow}

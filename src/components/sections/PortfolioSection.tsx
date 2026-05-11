@@ -14,7 +14,7 @@ type PortfolioSectionProps = {
 
 export function PortfolioSection({ content, site }: PortfolioSectionProps) {
   return (
-    <Section id="work" ariaLabelledby="work-title">
+    <Section id="work" ariaLabelledby="work-title" tone="light">
       <Container>
         <h2
           id="work-title"

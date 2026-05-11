@@ -72,6 +72,31 @@ body {
   color: var(--color-foreground);
 }
 
+/* Scoped palette for alternating sections (Tailwind `bg-background`, `text-foreground`, etc.). */
+.section-tone-light {
+  --color-background: #f4f4f4;
+  --color-foreground: #0a0a0a;
+  --color-muted: #666666;
+  --color-muted-light: #999999;
+  --color-accent: #0a0a0a;
+  --color-surface: #ffffff;
+  --color-border: #d4d4d4;
+  --color-card-placeholder: #1a1a1a;
+  --color-button-fill: #ebebeb;
+}
+
+.section-tone-dark {
+  --color-background: #0a0a0a;
+  --color-foreground: #f5f5f5;
+  --color-muted: #a3a3a3;
+  --color-muted-light: #737373;
+  --color-accent: #f5f5f5;
+  --color-surface: #171717;
+  --color-border: #3f3f46;
+  --color-card-placeholder: #262626;
+  --color-button-fill: #262626;
+}
+
 /* Subtle grain overlay for giant “Portfolio” title (matches PDF/Figma look) */
 .portfolio-title-grain {
   position: relative;

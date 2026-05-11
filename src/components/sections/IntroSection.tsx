@@ -11,9 +11,9 @@ type IntroSectionProps = {
 
 export function IntroSection({ intro }: IntroSectionProps) {
   return (
-    <Section id="about" ariaLabelledby="intro-headline">
+    <Section id="about" ariaLabelledby="intro-headline" tone="light">
       <Container>
-        <div className="grid grid-cols-1 items-center gap-3 sm:gap-4 lg:grid-cols-2 lg:gap-6! xl:gap-4!">
+        <div className="grid grid-cols-1 items-center gap-3 sm:gap-4 lg:grid-cols-2 lg:gap-16 xl:gap-24">
           <div className="relative z-10 flex justify-center lg:col-start-1 lg:row-start-1 lg:justify-start">
             <Image
               src="/images/Hello.png"

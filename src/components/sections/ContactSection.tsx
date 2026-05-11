@@ -51,7 +51,7 @@ export function ContactSection({ site }: ContactSectionProps) {
   };
 
   return (
-    <Section id="contact" ariaLabelledby="contact-title">
+    <Section id="contact" ariaLabelledby="contact-title" tone="dark">
       <Container>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
           <div>
@@ -65,7 +65,7 @@ export function ContactSection({ site }: ContactSectionProps) {
                 width={640}
                 height={128}
                 sizes="(min-width: 1024px) 40vw, 90vw"
-                className={`block ${sectionTitleImageClassName}`}
+                className={`block brightness-0 invert ${sectionTitleImageClassName}`}
               />
             </h2>
             <p className="text-balance text-3xl font-bold text-foreground sm:text-4xl">

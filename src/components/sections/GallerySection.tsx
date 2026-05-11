@@ -18,7 +18,7 @@ export function GallerySection({ items, video }: GallerySectionProps) {
   return (
     <Section
       id="gallery"
-      className="bg-background"
+      tone="light"
       ariaLabelledby="gallery-title"
     >
       <Container>

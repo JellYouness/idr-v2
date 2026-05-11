@@ -5,7 +5,7 @@ import { Container } from "@/components/layout/Container";
 export function LandingIntroDivider() {
   return (
     <div
-      className="bg-background py-4 sm:py-5"
+      className="section-tone-dark bg-background py-4 sm:py-5"
       role="presentation"
       aria-hidden="true"
     >
@@ -17,7 +17,7 @@ export function LandingIntroDivider() {
             alt=""
             width={64}
             height={80}
-            className="h-6 w-auto shrink-0 object-contain opacity-90 sm:h-7"
+            className="h-6 w-auto shrink-0 object-contain brightness-0 invert opacity-90 sm:h-7"
           />
           <div className="h-px min-w-0 flex-1 bg-foreground/12" />
         </div>

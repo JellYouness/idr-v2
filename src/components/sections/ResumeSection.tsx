@@ -11,7 +11,7 @@ type ResumeSectionProps = {
 
 export function ResumeSection({ resume }: ResumeSectionProps) {
   return (
-    <Section id="resume" ariaLabelledby="resume-title">
+    <Section id="resume" ariaLabelledby="resume-title" tone="dark">
       <Container>
         <div className="relative mb-16 md:mb-10">
           {/* <p
@@ -31,7 +31,7 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
               width={640}
               height={128}
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className={`block ${sectionTitleImageClassName}`}
+              className={`block brightness-0 invert ${sectionTitleImageClassName}`}
             />
           </h2>
         </div>
@@ -49,7 +49,7 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
                     className="flex gap-3"
                   >
                     {/* <ChainIcon className="mt-1" /> */}
-                    <Image src="/icons/hyperlink-icon.svg" alt="Chain" width={14} height={14} className="size-4! mt-2 fill-muted-light" />
+                    <Image src="/icons/hyperlink-icon.svg" alt="" width={14} height={14} className="mt-2 size-4 shrink-0 brightness-0 invert opacity-80" />
                     <div>
                       <p className="text-lg font-bold text-foreground">
                         {item.title}
