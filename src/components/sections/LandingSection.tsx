@@ -45,7 +45,7 @@ export function LandingSection({ site }: LandingSectionProps) {
             <div className="mt-6 md:mt-10">
               <Image
                 id="landing-portfolio-title"
-                src="/videos/porfolio.gif"
+                src="/videos/port.gif"
                 alt="Portfolio"
                 width={1600}
                 height={320}

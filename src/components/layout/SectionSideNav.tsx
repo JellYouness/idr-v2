@@ -1,13 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 const NAV_ITEMS = [
-  { id: "top", label: "Top" },
-  { id: "about", label: "About" },
-  { id: "resume", label: "Resume" },
-  { id: "work", label: "Work" },
-  { id: "contact", label: "Contact" },
+  { id: "top", slug: "TOP", surface: "dark" as const },
+  { id: "about", slug: "ABOUT", surface: "light" as const },
+  { id: "resume", slug: "RESUME", surface: "dark" as const },
+  { id: "work", slug: "WORK", surface: "light" as const },
+  { id: "contact", slug: "CONTACT", surface: "dark" as const },
 ] as const;
 
 type NavSectionId = (typeof NAV_ITEMS)[number]["id"];
@@ -43,41 +43,49 @@ export function SectionSideNav() {
     };
   }, [sync]);
 
+  const activeIndex = useMemo(() => {
+    const i = NAV_ITEMS.findIndex((item) => item.id === activeId);
+    return i < 0 ? 0 : i;
+  }, [activeId]);
+
+  const item = NAV_ITEMS[activeIndex];
+  const part = `P/${String(activeIndex + 1).padStart(2, "0")}`;
+  const isDark = item.surface === "dark";
+
+  const linkTone = isDark
+    ? "text-zinc-100"
+    : "text-zinc-950";
+
+  const pipeTone = isDark ? "text-zinc-500" : "text-zinc-500";
+  const codeTone = isDark ? "text-zinc-400" : "text-zinc-700";
+
   return (
     <nav
-      aria-label="On this page"
-      className="pointer-events-none fixed right-4 top-1/2 z-50 hidden -translate-y-1/2 md:block md:pointer-events-auto lg:right-8"
+      aria-label="Current section"
+      aria-live="polite"
+      aria-atomic="true"
+      className="pointer-events-none fixed right-0 top-1/2 z-50 hidden -translate-y-1/2 md:block md:pointer-events-auto"
     >
-      <ul className="flex flex-col items-end gap-1 rounded-lg border border-zinc-200/90 bg-white/92 py-2 pl-3 pr-1 shadow-sm backdrop-blur-sm">
-        {NAV_ITEMS.map((item) => {
-          const isActive = activeId === item.id;
-          return (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                className={[
-                  "group pointer-events-auto flex items-center gap-2 py-1 text-xs tracking-wide transition-colors",
-                  isActive
-                    ? "font-semibold text-zinc-950"
-                    : "font-medium text-zinc-500 hover:text-zinc-900",
-                ].join(" ")}
-                aria-current={isActive ? "location" : undefined}
-              >
-                <span
-                  className={[
-                    "h-1.5 shrink-0 rounded-full transition-[width,background-color]",
-                    isActive
-                      ? "w-4 bg-zinc-950"
-                      : "w-1.5 bg-zinc-300 group-hover:bg-zinc-500",
-                  ].join(" ")}
-                  aria-hidden
-                />
-                <span>{item.label}</span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="flex justify-end pr-3 lg:pr-6">
+        <a
+          key={activeId}
+          href={`#${item.id}`}
+          className={[
+            "pointer-events-auto inline-flex origin-center rotate-90 items-baseline gap-0 whitespace-nowrap py-2 text-[11px] font-semibold leading-none tracking-[0.14em] transition-colors duration-300 sm:text-xs",
+            linkTone,
+          ].join(" ")}
+          aria-current="location"
+          aria-label={`Current section: ${item.slug} | ${part}`}
+        >
+          <span>{item.slug}</span>
+          <span className={["mx-1 font-normal transition-colors duration-300", pipeTone].join(" ")} aria-hidden>
+            |
+          </span>
+          <span className={["tabular-nums tracking-widest transition-colors duration-300", codeTone].join(" ")}>
+            {part}
+          </span>
+        </a>
+      </div>
     </nav>
   );
 }
