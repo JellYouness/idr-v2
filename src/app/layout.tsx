@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { siteMeta } from "@/lib/portfolio-content";
 import { MediaLoadingOverlay } from "@/components/system/MediaLoadingOverlay";
+import { SectionSideNav } from "@/components/layout/SectionSideNav";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-dvh font-sans antialiased">
         <MediaLoadingOverlay />
+        <SectionSideNav />
         {children}
         <SiteFooter site={siteMeta} />
       </body>

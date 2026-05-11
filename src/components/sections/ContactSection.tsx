@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { sectionTitleImageClassName } from "@/lib/section-title-image";
 import type { SiteMeta } from "@/lib/types";
 
 type ContactSectionProps = {
@@ -53,15 +55,22 @@ export function ContactSection({ site }: ContactSectionProps) {
       <Container>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-16">
           <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-muted">
-              Contact
-            </p>
             <h2
               id="contact-title"
-              className="text-balance text-3xl font-bold text-foreground sm:text-4xl"
+              className="relative m-0 mb-4 p-0 font-[inherit] font-normal leading-none"
             >
-              Let’s work together
+              <Image
+                src="/images/contact.png"
+                alt="Contact"
+                width={640}
+                height={128}
+                sizes="(min-width: 1024px) 40vw, 90vw"
+                className={`block ${sectionTitleImageClassName}`}
+              />
             </h2>
+            <p className="text-balance text-3xl font-bold text-foreground sm:text-4xl">
+              Let’s work together
+            </p>
             <p className="mt-4 max-w-xl text-base text-muted sm:text-lg">
               Tell me about your project and I’ll get back to you as soon as possible.
             </p>

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SkillBadge } from "@/components/ui/SkillBadge";
-import { resumeTitleGifClassName } from "@/lib/section-title-gif";
+import { sectionTitleImageClassName } from "@/lib/section-title-image";
 import type { ResumeContent } from "@/lib/types";
 
 type ResumeSectionProps = {
@@ -26,12 +26,12 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
             className="relative m-0 p-0 font-[inherit] font-normal leading-none"
           >
             <Image
-              src="/videos/resume.gif"
+              src="/images/Resume.png"
               alt={resume.sectionTitle}
               width={640}
               height={128}
-              unoptimized
-              className={`block ${resumeTitleGifClassName}`}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className={`block ${sectionTitleImageClassName}`}
             />
           </h2>
         </div>

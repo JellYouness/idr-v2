@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { SkillIcon } from "@/components/ui/SkillIcon";
+import { sectionTitleImageClassName } from "@/lib/section-title-image";
 import { toolLabels } from "@/lib/portfolio-content";
 import type { PortfolioSectionContent } from "@/lib/types";
 import type { SiteMeta } from "@/lib/types";
@@ -14,14 +16,19 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
   return (
     <Section id="work" ariaLabelledby="work-title">
       <Container>
-        <h2 id="work-title" className="sr-only">
-          Portfolio projects
+        <h2
+          id="work-title"
+          className="relative m-0 mb-10 p-0 font-[inherit] font-normal leading-none"
+        >
+          <Image
+            src="/images/project.png"
+            alt="Projects"
+            width={1600}
+            height={320}
+            sizes="100vw"
+            className={`block ${sectionTitleImageClassName}`}
+          />
         </h2>
-        {content.sectionLabel ? (
-          <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-muted">
-            {content.sectionLabel}
-          </p>
-        ) : null}
 
         <div className="grid gap-8 md:grid-cols-3">
           {content.cards.map((card) => (

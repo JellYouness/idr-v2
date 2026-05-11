@@ -38,7 +38,9 @@ export function LandingSection({ site }: LandingSectionProps) {
           <div className="w-full">
             <div className="flex flex-col gap-3 text-sm font-medium text-foreground md:flex-row md:items-start md:justify-between md:gap-6 md:text-base">
               <p className="md:max-w-[50%]">{site.roleLine}</p>
-              <p className="text-balance md:max-w-[50%] md:text-right">{contactLine}</p>
+              <p className="text-balance md:max-w-[50%] md:text-right">
+                {contactLine}
+              </p>
             </div>
             <div className="mt-6 md:mt-10">
               <Image
