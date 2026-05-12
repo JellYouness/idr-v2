@@ -118,3 +118,16 @@ body {
   position: relative;
   z-index: 2;
 }
+
+/* scroll bar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 10px;
+  width: 9px;
+}

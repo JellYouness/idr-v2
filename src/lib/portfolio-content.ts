@@ -7,6 +7,7 @@ import type {
   SiteMeta,
   SkillToolId,
 } from "./types";
+import { emailConfig } from "@/config/email";
 
 export const toolLabels: Record<SkillToolId, string> = {
   "after-effects": "After Effect",
@@ -22,7 +23,7 @@ export const siteMeta: SiteMeta = {
   eyebrow: "Creative Presentation",
   description:
     "Portfolio of Idrissi Oussama — video editing, motion design, and 3D for luxury brands and high-profile clients.",
-  email: "idrissioussama001@gmail.com",
+  email: emailConfig.contactEmail,
   phoneDisplay: "+212 6 1540 2961",
   phoneHref: "+212615402961",
   location: "Casablanca, Morroco",
