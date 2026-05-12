@@ -1,81 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type MediaLoadingOverlayProps = {
+  /** Hide splash after this many ms (avoids waiting on all media — helps low-RAM mobile Safari). */
   timeoutMs?: number;
 };
 
-function isHTMLImageElement(el: Element): el is HTMLImageElement {
-  return el.tagName.toLowerCase() === "img";
-}
-
-function isHTMLVideoElement(el: Element): el is HTMLVideoElement {
-  return el.tagName.toLowerCase() === "video";
-}
-
-function waitForImage(img: HTMLImageElement) {
-  if (img.complete && img.naturalWidth > 0) return Promise.resolve();
-
-  return new Promise<void>((resolve) => {
-    const done = () => {
-      img.removeEventListener("load", done);
-      img.removeEventListener("error", done);
-      resolve();
-    };
-    img.addEventListener("load", done, { once: true });
-    img.addEventListener("error", done, { once: true });
-  });
-}
-
-function waitForVideo(video: HTMLVideoElement) {
-  // HAVE_CURRENT_DATA (2) is enough to render a first frame.
-  if (video.readyState >= 2) return Promise.resolve();
-
-  return new Promise<void>((resolve) => {
-    const done = () => {
-      video.removeEventListener("loadeddata", done);
-      video.removeEventListener("error", done);
-      resolve();
-    };
-    video.addEventListener("loadeddata", done, { once: true });
-    video.addEventListener("error", done, { once: true });
-  });
-}
-
-export function MediaLoadingOverlay({ timeoutMs = 8000 }: MediaLoadingOverlayProps) {
+/**
+ * Short splash only. Waiting on every img/video + multiple autoplay MP4s was a common trigger for
+ * iOS “A problem repeatedly occurred” tab crashes.
+ */
+export function MediaLoadingOverlay({ timeoutMs = 2500 }: MediaLoadingOverlayProps) {
   const [isReady, setIsReady] = useState(false);
 
-  const timeoutSignal = useMemo(() => {
-    return { timeoutMs };
-  }, [timeoutMs]);
-
   useEffect(() => {
-    let cancelled = false;
-
-    const run = async () => {
-      const mediaEls = Array.from(document.querySelectorAll("img, video"));
-      const tasks = mediaEls.map((el) => {
-        if (isHTMLImageElement(el)) return waitForImage(el);
-        if (isHTMLVideoElement(el)) return waitForVideo(el);
-        return Promise.resolve();
-      });
-
-      await Promise.race([
-        Promise.allSettled(tasks),
-        new Promise<void>((resolve) => window.setTimeout(resolve, timeoutSignal.timeoutMs)),
-      ]);
-
-      if (!cancelled) setIsReady(true);
-    };
-
-    run();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [timeoutSignal]);
+    const t = window.setTimeout(() => setIsReady(true), timeoutMs);
+    return () => window.clearTimeout(t);
+  }, [timeoutMs]);
 
   return (
     <div
@@ -100,4 +43,3 @@ export function MediaLoadingOverlay({ timeoutMs = 8000 }: MediaLoadingOverlayPro
     </div>
   );
 }
-

@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-dvh font-sans antialiased">
-        <MediaLoadingOverlay />
+        <MediaLoadingOverlay timeoutMs={2500} />
         <SectionSideNav />
         {children}
         <SiteFooter site={siteMeta} />

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { PortfolioPreviewVideo } from "@/components/ui/PortfolioPreviewVideo";
 import { SkillIcon } from "@/components/ui/SkillIcon";
 import { sectionTitleImageClassName } from "@/lib/section-title-image";
 import { toolLabels } from "@/lib/portfolio-content";
@@ -46,17 +47,7 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
                 </span>
               </div>
               <div className="mt-5 aspect-3/4 w-full overflow-hidden bg-card-placeholder">
-                <video
-                  className="h-full w-full object-cover"
-                  autoPlay
-                  muted
-                  playsInline
-                  loop
-                  preload="auto"
-                  aria-label={`${card.title} preview`}
-                >
-                  <source src={card.videoSrc} type="video/mp4" />
-                </video>
+                <PortfolioPreviewVideo src={card.videoSrc} title={card.title} />
               </div>
             </article>
           ))}
