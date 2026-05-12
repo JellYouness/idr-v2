@@ -28,9 +28,9 @@ export function LandingSection({ site }: LandingSectionProps) {
               className="h-14 w-auto max-w-[min(100%,5.5rem)] object-contain object-left brightness-0 invert md:h-18 md:max-w-[min(100%,6.5rem)]"
             />
             <p className="text-lg font-extrabold tracking-tight md:text-xl">
-              {site.eyebrow}
+              {site.name}
             </p>
-            <p className="text-base font-normal md:text-lg">{site.name}</p>
+            {/* <p className="text-base font-normal md:text-lg">{site.name}</p> */}
           </div>
         </div>
 
