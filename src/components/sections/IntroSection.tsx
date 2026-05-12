@@ -33,7 +33,7 @@ export function IntroSection({ intro }: IntroSectionProps) {
             {intro.headline}
           </h2>
 
-          <p className="max-lg:text-center text-lg font-medium italic text-muted sm:text-xl lg:col-start-1 lg:row-start-3 lg:-mt-32">
+          <p className="max-lg:text-center text-lg font-medium italic text-muted sm:text-xl lg:col-start-1 lg:row-start-3 lg:-mt-44">
             {intro.title}
           </p>
 

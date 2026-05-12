@@ -29,7 +29,7 @@ export const siteMeta: SiteMeta = {
   location: "Casablanca, Morroco",
   portfolioCta: {
     label: "View complete Porfolio",
-    href: "#gallery",
+    href: "https://drive.google.com/drive/folders/18dCDlna3bkQkzQabJgRfvDms6A3ofVzQ?usp=drive_link",
   },
 };
 

@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { sectionTitleImageClassName } from "@/lib/section-title-image";
-import { emailJsConfig, emailJsTemplateFields } from "@/config/email";
+import { emailJsConfig, buildEmailJsTemplateParams, emailJsTemplateFields } from "@/config/email";
 import type { SiteMeta } from "@/lib/types";
 
 type ContactSectionProps = {
@@ -71,11 +71,11 @@ export function ContactSection({ site }: ContactSectionProps) {
     setErrorText("");
     setStatus("sending");
 
-    const templateParams = {
-      [emailJsTemplateFields.name]: name.trim(),
-      [emailJsTemplateFields.email]: email.trim(),
-      [emailJsTemplateFields.message]: message.trim(),
-    };
+    const templateParams = buildEmailJsTemplateParams({
+      name,
+      email,
+      message,
+    });
 
     try {
       await emailjs.send(
