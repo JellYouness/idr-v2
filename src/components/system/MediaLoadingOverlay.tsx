@@ -28,16 +28,19 @@ export function MediaLoadingOverlay({ timeoutMs = 2500 }: MediaLoadingOverlayPro
         isReady ? "pointer-events-none opacity-0" : "opacity-100",
       ].join(" ")}
     >
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center gap-3">
         <Image
-          src="/videos/logo.gif"
+          src="/images/logo.png"
           alt=""
           width={160}
           height={160}
-          unoptimized
           priority
-          className="size-28 object-contain sm:size-36"
+          sizes="144px"
+          className="size-28 object-contain brightness-0 invert sm:size-36"
         />
+        <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-foreground/50">
+          Test — no GIF
+        </p>
         <span className="sr-only">Loading</span>
       </div>
     </div>

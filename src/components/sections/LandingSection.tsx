@@ -43,16 +43,25 @@ export function LandingSection({ site }: LandingSectionProps) {
               </p>
             </div>
             <div className="mt-6 md:mt-10">
+              <p className="mb-3 text-left text-[10px] font-medium uppercase tracking-[0.25em] text-foreground/45 md:text-center">
+                Test — GIF replaced with PNG + type
+              </p>
               <Image
                 id="landing-portfolio-title"
-                src="/videos/port.gif"
+                src="/images/project.png"
                 alt="Portfolio"
                 width={1600}
                 height={320}
-                unoptimized
                 priority
-                className="h-auto w-full object-contain object-left md:object-center"
+                sizes="100vw"
+                className="h-auto w-full object-contain object-left brightness-0 invert md:object-center"
               />
+              <p
+                className="mt-4 text-left font-bold uppercase tracking-[0.08em] text-foreground md:text-center md:text-lg"
+                aria-hidden
+              >
+                Portfolio
+              </p>
             </div>
           </div>
         </div>
