@@ -52,8 +52,8 @@ export function LandingSection({ site }: LandingSectionProps) {
                 alt="Portfolio"
                 width={1600}
                 height={320}
-                priority
                 sizes="100vw"
+                loading="lazy"
                 className="h-auto w-full object-contain object-left brightness-0 invert md:object-center"
               />
               <p

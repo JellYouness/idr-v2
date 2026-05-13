@@ -1,24 +1,32 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
 type MediaLoadingOverlayProps = {
-  /** Hide splash after this many ms (avoids waiting on all media — helps low-RAM mobile Safari). */
+  /** Hide splash after this many ms. */
   timeoutMs?: number;
+  /** Shorter splash on narrow viewports (less work during first paint on iOS). */
+  mobileTimeoutMs?: number;
 };
 
 /**
- * Short splash only. Waiting on every img/video + multiple autoplay MP4s was a common trigger for
- * iOS “A problem repeatedly occurred” tab crashes.
+ * Text-only splash on small screens (no image decode). Short timers to avoid
+ * stacking heavy work with the rest of the page on low-RAM Safari.
  */
-export function MediaLoadingOverlay({ timeoutMs = 2500 }: MediaLoadingOverlayProps) {
+export function MediaLoadingOverlay({
+  timeoutMs = 1200,
+  mobileTimeoutMs = 500,
+}: MediaLoadingOverlayProps) {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    const t = window.setTimeout(() => setIsReady(true), timeoutMs);
+    const narrow =
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 767px)").matches;
+    const ms = narrow ? mobileTimeoutMs : timeoutMs;
+    const t = window.setTimeout(() => setIsReady(true), ms);
     return () => window.clearTimeout(t);
-  }, [timeoutMs]);
+  }, [timeoutMs, mobileTimeoutMs]);
 
   return (
     <div
@@ -28,20 +36,10 @@ export function MediaLoadingOverlay({ timeoutMs = 2500 }: MediaLoadingOverlayPro
         isReady ? "pointer-events-none opacity-0" : "opacity-100",
       ].join(" ")}
     >
-      <div className="flex flex-col items-center gap-3">
-        <Image
-          src="/images/logo.png"
-          alt=""
-          width={160}
-          height={160}
-          priority
-          sizes="144px"
-          className="size-28 object-contain brightness-0 invert sm:size-36"
-        />
-        <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-foreground/50">
-          Test — no GIF
+      <div className="flex flex-col items-center gap-2 px-6 text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.35em] text-foreground/70 md:text-sm">
+          Loading
         </p>
-        <span className="sr-only">Loading</span>
       </div>
     </div>
   );

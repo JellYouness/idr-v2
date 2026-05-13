@@ -46,8 +46,22 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
                   {toolLabels[card.toolId]}
                 </span>
               </div>
-              <div className="mt-5 aspect-3/4 w-full overflow-hidden bg-card-placeholder">
-                <PortfolioPreviewVideo src={card.videoSrc} title={card.title} />
+              <div className="relative mt-5 aspect-3/4 w-full overflow-hidden bg-card-placeholder">
+                {/*
+                  No <video> in the DOM below md — iOS Safari often OOMs with multiple MP4 decoders
+                  even with preload tricks. Desktop keeps animated previews.
+                */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center md:hidden">
+                  <span className="text-sm font-semibold text-foreground">
+                    {card.title}
+                  </span>
+                  <span className="max-w-56 text-[10px] font-medium uppercase leading-snug tracking-[0.18em] text-muted">
+                    Video preview disabled on small screens
+                  </span>
+                </div>
+                <div className="absolute inset-0 hidden min-h-0 md:block">
+                  <PortfolioPreviewVideo src={card.videoSrc} title={card.title} />
+                </div>
               </div>
             </article>
           ))}

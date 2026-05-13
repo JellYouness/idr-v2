@@ -51,8 +51,8 @@ export function IntroSection({ intro }: IntroSectionProps) {
                 alt={intro.portraitAlt}
                 fill
                 className="object-cover object-center lg:object-contain lg:object-bottom"
-                sizes="(min-width: 1024px) 48vw, 85vw"
-                priority
+                sizes="(min-width: 1024px) 48vw, 90vw"
+                loading="lazy"
               />
             </div>
           </div>
