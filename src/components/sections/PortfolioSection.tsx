@@ -58,7 +58,7 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
             href={site.portfolioCta.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground/35 px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground bg-foreground px-10 py-4 text-center text-sm font-medium text-white transition-colors hover:bg-foreground/85"
           >
             {site.portfolioCta.label}
           </a>
@@ -66,7 +66,7 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
             href={site.resumeCta.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground/35 px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
+            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground bg-foreground px-10 py-4 text-center text-sm font-medium text-white transition-colors hover:bg-foreground/85"
           >
             {site.resumeCta.label}
           </a>
