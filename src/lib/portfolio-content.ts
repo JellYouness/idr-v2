@@ -26,9 +26,9 @@ export const siteMeta: SiteMeta = {
   email: emailConfig.contactEmail,
   phoneDisplay: "+212 6 1540 2961",
   phoneHref: "+212615402961",
-  location: "Casablanca, Morroco",
+  location: "Casablanca, Morocco",
   portfolioCta: {
-    label: "View complete Porfolio",
+    label: "View complete Portfolio",
     href: "https://drive.google.com/drive/folders/18dCDlna3bkQkzQabJgRfvDms6A3ofVzQ?usp=drive_link",
   },
   resumeCta: {
