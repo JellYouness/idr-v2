@@ -31,6 +31,10 @@ export const siteMeta: SiteMeta = {
     label: "View complete Porfolio",
     href: "https://drive.google.com/drive/folders/18dCDlna3bkQkzQabJgRfvDms6A3ofVzQ?usp=drive_link",
   },
+  resumeCta: {
+    label: "View Resume",
+    href: "/Idrissi oussama resume.pdf",
+  },
 };
 
 export const heroContent: HeroContent = {

@@ -53,6 +53,10 @@ export interface SiteMeta {
     label: string;
     href: string;
   };
+  resumeCta: {
+    label: string;
+    href: string;
+  };
 }
 
 export interface HeroContent {
