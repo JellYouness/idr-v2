@@ -58,7 +58,7 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
             href={site.portfolioCta.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground bg-foreground px-10 py-4 text-center text-sm font-medium text-white transition-colors hover:bg-foreground/85"
+            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground bg-white px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-white/90"
           >
             {site.portfolioCta.label}
           </a>
