@@ -53,7 +53,7 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
           ))}
         </div>
 
-        <div className="mt-14 flex justify-center">
+        <div className="mt-14 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <a
             href={site.portfolioCta.href}
             target="_blank"
@@ -61,6 +61,14 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
             className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground/35 px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
           >
             {site.portfolioCta.label}
+          </a>
+          <a
+            href={site.resumeCta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground/35 px-10 py-4 text-center text-sm font-medium text-foreground transition-colors hover:bg-foreground hover:text-background"
+          >
+            {site.resumeCta.label}
           </a>
         </div>
       </Container>
