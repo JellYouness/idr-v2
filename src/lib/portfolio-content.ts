@@ -113,16 +113,19 @@ export const portfolioSectionContent: PortfolioSectionContent = {
       title: "3D Video",
       toolId: "blender",
       videoSrc: "/videos/3d.mp4",
+      posterSrc: "/videos/posters/3d.webp",
     },
     {
       title: "Motion graphic",
       toolId: "after-effects",
       videoSrc: "/videos/Motion%20graphic.mp4",
+      posterSrc: "/videos/posters/motion-graphic.webp",
     },
     {
       title: "UGC Video",
       toolId: "after-effects",
       videoSrc: "/videos/ugc_1.mp4",
+      posterSrc: "/videos/posters/ugc_1.webp",
     },
   ],
 };

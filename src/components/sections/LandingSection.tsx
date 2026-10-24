@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { HeroTitleVideo } from "@/components/ui/HeroTitleVideo";
 import type { SiteMeta } from "@/lib/types";
 import { Container } from "../layout/Container";
 
@@ -21,11 +22,11 @@ export function LandingSection({ site }: LandingSectionProps) {
             <Image
               src="/images/logo.png"
               alt={`${site.name} logo`}
-              width={120}
-              height={144}
+              width={104}
+              height={240}
               priority
-              sizes="(min-width: 768px) 7rem, 6rem"
-              className="h-14 w-auto max-w-[min(100%,5.5rem)] object-contain object-left brightness-0 invert md:h-18 md:max-w-[min(100%,6.5rem)]"
+              sizes="(min-width: 768px) 2rem, 1.5rem"
+              className="h-14 w-auto max-w-[min(100%,5.5rem)] object-contain object-left md:h-18 md:max-w-[min(100%,6.5rem)]"
             />
             <p className="text-lg font-extrabold tracking-tight md:text-xl">
               {site.name}
@@ -43,14 +44,13 @@ export function LandingSection({ site }: LandingSectionProps) {
               </p>
             </div>
             <div className="mt-6 md:mt-10">
-              <Image
+              <HeroTitleVideo
                 id="landing-portfolio-title"
-                src="/videos/port.gif"
-                alt="Portfolio"
+                src="/videos/port.mp4"
+                poster="/videos/port-poster.webp"
+                label="Portfolio"
                 width={1600}
-                height={320}
-                unoptimized
-                priority
+                height={366}
                 className="h-auto w-full object-contain object-left md:object-center"
               />
             </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const NAV_ITEMS = [
   { id: "top", slug: "TOP", surface: "dark" as const },
@@ -29,19 +29,42 @@ function pickActiveSection(): NavSectionId {
 export function SectionSideNav() {
   const [activeId, setActiveId] = useState<NavSectionId>(NAV_ITEMS[0].id);
 
-  const sync = useCallback(() => {
-    setActiveId(pickActiveSection());
-  }, []);
-
   useEffect(() => {
-    sync();
-    window.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync, { passive: true });
-    return () => {
+    // The nav is hidden below `md`, so skip the scroll work on phones.
+    const desktop = window.matchMedia("(min-width: 768px)");
+    let frame = 0;
+
+    const sync = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        // Same id bails out of the re-render.
+        setActiveId(pickActiveSection());
+      });
+    };
+
+    const attach = () => {
+      window.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync, { passive: true });
+      sync();
+    };
+
+    const detach = () => {
       window.removeEventListener("scroll", sync);
       window.removeEventListener("resize", sync);
+      cancelAnimationFrame(frame);
+      frame = 0;
     };
-  }, [sync]);
+
+    const onBreakpoint = () => (desktop.matches ? attach() : detach());
+
+    onBreakpoint();
+    desktop.addEventListener("change", onBreakpoint);
+    return () => {
+      desktop.removeEventListener("change", onBreakpoint);
+      detach();
+    };
+  }, []);
 
   const activeIndex = useMemo(() => {
     const i = NAV_ITEMS.findIndex((item) => item.id === activeId);
