@@ -4,56 +4,75 @@ import { useEffect, useRef } from "react";
 
 type PortfolioPreviewVideoProps = {
   src: string;
+  poster: string;
   title: string;
 };
 
-function playWhenReady(video: HTMLVideoElement) {
-  const play = () => {
-    void video.play().catch(() => {});
-  };
+/** Start loading slightly before the card scrolls in. */
+const NEAR_MARGIN = "200px 0px";
+/** Beyond this distance the buffer is released, so phones keep ~one decoder alive. */
+const FAR_MARGIN = "150% 0px";
 
-  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
-    play();
-    return undefined;
-  }
-
-  video.preload = "auto";
-  video.load();
-  video.addEventListener("canplay", play, { once: true });
-  return () => video.removeEventListener("canplay", play);
-}
-
-export function PortfolioPreviewVideo({ src, title }: PortfolioPreviewVideoProps) {
+export function PortfolioPreviewVideo({ src, poster, title }: PortfolioPreviewVideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
 
-    let cancelPlay: (() => void) | undefined;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    video.muted = true;
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
+    const attach = () => {
+      if (video.getAttribute("src") !== src) {
+        video.src = src;
+        video.load();
+      }
+    };
+
+    const release = () => {
+      video.pause();
+      if (video.hasAttribute("src")) {
+        video.removeAttribute("src");
+        video.load();
+      }
+    };
+
+    const near = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) attach();
+      },
+      { rootMargin: NEAR_MARGIN },
+    );
+
+    const visible = new IntersectionObserver(
+      ([entry]) => {
         if (!entry) return;
-
         if (entry.isIntersecting) {
-          cancelPlay?.();
-          cancelPlay = playWhenReady(video);
+          attach();
+          if (!reduceMotion) void video.play().catch(() => {});
         } else {
-          cancelPlay?.();
-          cancelPlay = undefined;
           video.pause();
         }
       },
       { threshold: 0.25 },
     );
 
-    io.observe(video);
+    const far = new IntersectionObserver(
+      ([entry]) => {
+        if (entry && !entry.isIntersecting) release();
+      },
+      { rootMargin: FAR_MARGIN },
+    );
+
+    near.observe(video);
+    visible.observe(video);
+    far.observe(video);
     return () => {
-      io.disconnect();
-      cancelPlay?.();
-      video.pause();
+      near.disconnect();
+      visible.disconnect();
+      far.disconnect();
+      release();
     };
   }, [src]);
 
@@ -61,13 +80,13 @@ export function PortfolioPreviewVideo({ src, title }: PortfolioPreviewVideoProps
     <video
       ref={ref}
       className="h-full w-full object-cover"
+      poster={poster}
       muted
       playsInline
       loop
       preload="none"
+      disablePictureInPicture
       aria-label={`${title} preview`}
-    >
-      <source src={src} type="video/mp4" />
-    </video>
+    />
   );
 }

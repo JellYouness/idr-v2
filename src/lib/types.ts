@@ -31,6 +31,8 @@ export interface PortfolioCard {
   toolId: SkillToolId;
   /** Public path to preview video (e.g. /videos/clip.mp4) */
   videoSrc: string;
+  /** Still frame shown before the video loads (e.g. /videos/posters/clip.webp) */
+  posterSrc: string;
   subtitle?: string;
 }
 

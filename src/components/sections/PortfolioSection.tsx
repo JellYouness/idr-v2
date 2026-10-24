@@ -47,7 +47,11 @@ export function PortfolioSection({ content, site }: PortfolioSectionProps) {
                 </span>
               </div>
               <div className="mt-5 aspect-3/4 w-full overflow-hidden bg-card-placeholder">
-                <PortfolioPreviewVideo src={card.videoSrc} title={card.title} />
+                <PortfolioPreviewVideo
+                  src={card.videoSrc}
+                  poster={card.posterSrc}
+                  title={card.title}
+                />
               </div>
             </article>
           ))}

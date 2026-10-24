@@ -15,9 +15,10 @@ export function LandingIntroDivider() {
           <Image
             src="/images/logo.png"
             alt=""
-            width={64}
-            height={80}
-            className="h-6 w-auto shrink-0 object-contain brightness-0 invert opacity-90 sm:h-7"
+            width={104}
+            height={240}
+            sizes="1rem"
+            className="h-6 w-auto shrink-0 object-contain opacity-90 sm:h-7"
           />
           <div className="h-px min-w-0 flex-1 bg-foreground/12" />
         </div>
