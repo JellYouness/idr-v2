@@ -111,7 +111,7 @@ export function ResumeSection({ resume, resumeHref }: ResumeSectionProps) {
             href={resumeHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground bg-foreground px-10 py-4 text-center text-sm font-medium text-background transition-colors hover:bg-foreground/85"
+            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-white bg-transparent px-10 py-4 text-center text-sm font-medium text-white transition-colors hover:bg-white/10"
           >
             View full resume
           </a>
