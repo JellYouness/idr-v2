@@ -7,9 +7,11 @@ import type { ResumeContent } from "@/lib/types";
 
 type ResumeSectionProps = {
   resume: ResumeContent;
+  /** Public path to the full resume PDF */
+  resumeHref: string;
 };
 
-export function ResumeSection({ resume }: ResumeSectionProps) {
+export function ResumeSection({ resume, resumeHref }: ResumeSectionProps) {
   return (
     <Section id="resume" ariaLabelledby="resume-title" tone="dark">
       <Container>
@@ -102,6 +104,17 @@ export function ResumeSection({ resume }: ResumeSectionProps) {
               ))}
             </ul>
           </div>
+        </div>
+
+        <div className="mt-14 flex justify-center">
+          <a
+            href={resumeHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-w-[min(100%,20rem)] uppercase items-center justify-center border border-foreground bg-foreground px-10 py-4 text-center text-sm font-medium text-background transition-colors hover:bg-foreground/85"
+          >
+            View full resume
+          </a>
         </div>
       </Container>
     </Section>

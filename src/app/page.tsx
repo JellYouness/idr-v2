@@ -17,7 +17,7 @@ export default function Home() {
       <LandingSection site={siteMeta} />
       <LandingIntroDivider />
       <IntroSection intro={introContent} />
-      <ResumeSection resume={resumeContent} />
+      <ResumeSection resume={resumeContent} resumeHref={siteMeta.resumeCta.href} />
       <PortfolioSection content={portfolioSectionContent} site={siteMeta} />
       <ContactSection site={siteMeta} />
       <LandingIntroDivider />
