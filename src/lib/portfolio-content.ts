@@ -33,7 +33,7 @@ export const siteMeta: SiteMeta = {
   },
   resumeCta: {
     label: "View Resume",
-    href: "/Idrissi oussama resume.pdf",
+    href: "/resume/idrissi-oussama-cv-en.pdf",
   },
 };
 
